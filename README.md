@@ -11,6 +11,10 @@ Part of the **[SkynetLabs AEO Suite](https://github.com/waseemnasir2k26)** — *
 
 ---
 
+## Status
+
+Last reviewed: September 2026 · release v2026.09
+
 ## Why
 
 Search is moving from blue links to AI answers. The new question isn't "do I rank?" — it's "**does the AI quote me?**" AEO Radar scores exactly that, per page, and tells you what to fix. All analysis runs in PHP on your own server — no key, no cloud, nothing sent anywhere.
