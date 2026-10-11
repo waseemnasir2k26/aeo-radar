@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## [2026.10] - 2026-10-12
+
+- aeo-radar is a public GPLv2+ WordPress plugin (plugin header v1.0.0) that scores how quotable a page is to AI answer engines, with a per-post meta box and a worst-first dashboard under Tools -> AEO Radar; it runs locally with no API calls.
+- State: no commits since the 2026.09 release (2026-09-16); last functional commit was 2026-05-29 (v1.0.0). Code and plugin header were not touched this month.
+- Reviewed October 2026: README status line, commit history and all 8 README links (all returned HTTP 200); a Work with SkynetLabs section was added.
+- Known gaps: README describes the analyzer as testable but the repo has no test directory or runner; no CI or PHPCS config; not on the WordPress.org directory. The plugin header version was not bumped (outside the doc-only release file set).
+
 ## [2026.09] - 2026-09-16
 
 - Maintenance review of aeo-radar — a public GPLv2+ WordPress plugin ("AEO Radar", v1.0.0) that scores how quotable a page is by AI answer engines and lists specific fixes.
