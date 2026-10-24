@@ -1,74 +1,43 @@
-# AEO Radar — Answer Engine Audit & Score for WordPress
+# AEO Radar
 
-> Score how quotable your content is by AI answer engines (ChatGPT, Claude, Perplexity, Google AI Overviews, Gemini). One-click on-page audit per post + a worst-first site dashboard, with specific fixes. **100% local — no API, no cloud, no per-use cost.**
+**A WordPress plugin that scores how quotable each post is for AI answer engines, with fixes, worst first.**
 
-[![License: GPL v2+](https://img.shields.io/badge/License-GPLv2%2B-blue.svg)](LICENSE)
-![WordPress](https://img.shields.io/badge/WordPress-5.8%2B-21759B?logo=wordpress&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4?logo=php&logoColor=white)
-![No API cost](https://img.shields.io/badge/API_cost-%240-2EA043)
+![License: GPL v2+](https://img.shields.io/badge/License-GPLv2%2B-blue) ![WordPress 5.8+](https://img.shields.io/badge/WordPress-5.8%2B-21759B) ![PHP 7.4+](https://img.shields.io/badge/PHP-7.4%2B-777BB4)
 
-Part of the **[SkynetLabs AEO Suite](https://github.com/waseemnasir2k26)** — *Radar measures · [AEO Kit](https://github.com/waseemnasir2k26/aeo-kit) emits · [On-Device AI](https://github.com/waseemnasir2k26/on-device-ai) creates.*
+"Do I rank?" is no longer the only question. "Would an AI quote this page?" is harder to see. Radar checks the on-page signals that make content easy to lift.
 
----
+## What it does
 
-## Status
+- Scores every post 0-100, live in the editor sidebar.
+- Checks: answer-first opening (20), heading structure (15), question-style headings (10), lists and tables (15), FAQ section (10), meta description (10), focused title (10), depth of 300+ words (10).
+- Site-wide dashboard under **Tools > AEO Radar** ranks all content worst-first with specific fixes.
+- The scoring engine (`includes/class-aeor-analyzer.php`) is dependency-free PHP: no network calls, no API key.
 
-Last reviewed: October 2026 · release v2026.10
+## Quickstart
 
-## Why
-
-Search is moving from blue links to AI answers. The new question isn't "do I rank?" — it's "**does the AI quote me?**" AEO Radar scores exactly that, per page, and tells you what to fix. All analysis runs in PHP on your own server — no key, no cloud, nothing sent anywhere.
-
-## What it scores (0–100)
-
-| Check | Weight | Looks for |
-|---|---|---|
-| Answer-first opening | 20 | Concise, self-contained answer up top |
-| Heading structure | 15 | ≥2 descriptive H2/H3 |
-| Question-style headings | 10 | A heading phrased like the user's query |
-| Lists & tables | 15 | Structured content AI lifts cleanly |
-| FAQ section | 10 | The most-cited content shape |
-| Meta description | 10 | Present, 50–160 chars |
-| Focused title | 10 | Specific, 20–65 chars |
-| Depth | 10 | 300+ words of substance |
-
-Shown **live on every edit screen** (sidebar panel) and in a **site-wide dashboard** (Tools → AEO Radar) that ranks all content **worst-first** — your AEO work queue.
-
-## Install
-
-1. Copy `aeo-radar` into `wp-content/plugins/` (or zip → Plugins → Add New → Upload).
+1. Copy `aeo-radar` into `wp-content/plugins/` (or zip it and upload).
 2. Activate.
-3. Edit a post → see the **AEO Radar** score in the sidebar. Visit **Tools → AEO Radar** for the dashboard.
+3. Edit any post and read the score in the sidebar; open **Tools > AEO Radar** for the dashboard.
 
-## The scoring engine is pure + testable
+The analyzer is a plain function you can call on its own:
 
-`includes/class-aeor-analyzer.php` is dependency-free (`AEOR_Analyzer::analyze($html, $title, $excerpt)` → score + checks). No WordPress or network needed to run it — which is how it's unit-tested.
-
-## Structure
-
-```
-aeo-radar/
-├── aeo-radar.php
-├── uninstall.php
-├── readme.txt
-├── includes/
-│   ├── class-aeo-radar.php       # Loader
-│   ├── class-aeor-analyzer.php   # Pure scoring engine
-│   ├── class-aeor-meta-box.php   # Per-post score panel
-│   └── class-aeor-admin.php      # Tools → AEO Radar dashboard
-└── assets/
-    └── admin.css
+```php
+AEOR_Analyzer::analyze($html, $title, $excerpt); // score + per-check results
 ```
 
-## License
+Pair it with [aeo-kit](https://github.com/waseemnasir2k26/aeo-kit), which adds `llms.txt`, schema and FAQ blocks.
 
-GPL-2.0-or-later. Built by [SkynetLabs](https://www.skynetjoe.com). PRs welcome.
+## For you if
 
+You publish on WordPress and want a quick, local audit of which pages to fix first.
 
-## Work with SkynetLabs
+## Status and limits
 
-Built by [Waseem Nasir](https://www.skynetjoe.com/?utm_source=github&utm_medium=readme&utm_campaign=aeo-radar) at SkynetLabs — n8n + AI automation for small businesses.
+- The score is a checklist of content shape. It does not measure real citations in ChatGPT, Perplexity or AI Overviews.
+- GPL-2.0-or-later. Last reviewed October 2026.
 
-- Hire on Fiverr: https://www.fiverr.com/agencies/skynetjoellc
-- Hire on Upwork: https://www.upwork.com/freelancers/muhammadwaseemnasir
-- Book a free call: https://calendly.com/skynetlabs/schedule-a-free-consultation
+## Built by SkynetLabs
+
+Built by [SkynetLabs](https://skynetjoe.com). Questions: info@skynetjoe.com
+
+Need this wired into your business? SkynetLabs builds voice agents, n8n back offices and sites that convert → https://skynetjoe.com
